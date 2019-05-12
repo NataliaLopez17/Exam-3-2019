@@ -10,6 +10,7 @@ public class StudentWrapper {
 		CUM_LAUDE,
 		MAGNA_CUM_LAUDE
 	}
+	//test
 
 	/**
 	 * Exercise #3

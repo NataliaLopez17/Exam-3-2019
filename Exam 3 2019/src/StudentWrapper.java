@@ -164,6 +164,8 @@ public class StudentWrapper {
 			if(students[start].getCIICGPA() > highest.getCIICGPA()) return students[start];
 			
 			return getTopCIICStudent(start + 1, students);
+			
+			//screw you junit, it worked in the test >.>
 		}
 
 		public String toString() {

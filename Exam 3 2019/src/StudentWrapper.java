@@ -19,7 +19,7 @@ public class StudentWrapper {
 	 *
 	 */
 	public interface IncomeTaxPayer {
-		
+
 		public double getIncomeTaxRate();
 	}
 
@@ -44,7 +44,7 @@ public class StudentWrapper {
 		private String lastName;
 		private Gender gender;
 		private double GPA;
-		
+
 		public AbstractStudent(String idNumber, String firstName, String lastName, Gender gender, double GPA) {
 			this.idNumber = idNumber;
 			this.firstName = firstName;
@@ -82,11 +82,11 @@ public class StudentWrapper {
 		public void setGPA(double GPA) {
 			this.GPA = GPA;
 		}
-		
+
 		public abstract double getIncomeTaxRate();
 		public abstract double getSpecialtyGPA();
-		
-		
+
+
 	}
 
 	/**
@@ -99,14 +99,14 @@ public class StudentWrapper {
 	 *
 	 */
 	public static class CIICStudent extends AbstractStudent {
-		
-		
+
+
 		private double ciicGPA;
 		private int ciicCredits;
 
 		public CIICStudent(String idNumber, String firstName, String lastName, Gender gender, double GPA, double ciicGPA, int ciicCredits) {
 			super(idNumber, firstName, lastName, gender, GPA);
-			
+
 			this.ciicGPA = ciicGPA;
 			this.ciicCredits = ciicCredits;
 		}
@@ -133,7 +133,10 @@ public class StudentWrapper {
 		@Override
 		public Object clone() {
 			// YOUR CODE HERE
-			return null; // Dummy return
+			CIICStudent neue = new CIICStudent(new String(this.getIdNumber()), 
+					new String(this.getFirstName()), new String(this.getLastName()), 
+					this.getGender(), this.getCIICGPA(), this.getGPA(), this.getCIICCredits());
+			return neue;
 		}
 
 		public static CIICStudent maxGPA(CIICStudent s1, CIICStudent s2) {
@@ -150,8 +153,13 @@ public class StudentWrapper {
 		 */
 		public static CIICStudent getTopCIICStudent(int start, CIICStudent[] students) {
 			if(students.length == 0) return null;
-			
+
 			CIICStudent highest = students[0];
+			
+			
+			//if (start == students.length-1) {
+				//return students[students.length-1];
+			//}
 			
 			if(students[start].getCIICGPA() > highest.getCIICGPA()) return students[start];
 			
@@ -162,13 +170,13 @@ public class StudentWrapper {
 			return "Student: " + this.getIdNumber();
 		}
 
-		
+
 		/**
 		 * Exercise #4
 		 * A method that returns the students tax rate
 		 * Hint: Student have 5% tax rate.
 		 */
-	
+
 		public double getIncomeTaxRate() {
 			return  0.05;
 		}
@@ -214,11 +222,11 @@ public class StudentWrapper {
 		 * A method that returns the students tax rate
 		 * Hint: Student have 5% tax rate.
 		 */
-	
+
 		public double getIncomeTaxRate() {
 			return 0.05;
 		}
-		
+
 		/**
 		 * Exercise #7
 		 * A method that returns the position of the target INSOStudent in the given list.
